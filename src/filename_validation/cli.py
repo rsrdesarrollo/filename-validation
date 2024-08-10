@@ -33,7 +33,7 @@ def is_valid_filename(filename: str, min_len: int = 3) -> bool:
         print(f'Name too short ({min_len=}): {filename}')
 
     if not_snake_case := SNAKE_CASE_REGEX.search(name) is None:
-        print(f'Filename is not in snake case: {filename} {name}')
+        print(f'Filename is not in snake case: {filename}')
 
     failure = too_short or not_snake_case
     return not failure
