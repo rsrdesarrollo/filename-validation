@@ -9,7 +9,7 @@ Add the following to your `.pre-commit-config.yaml` file:
 
 ```yaml
 - repo: https://github.com/stefmolin/filename-validation
-  rev: 0.1.0
+  rev: 0.1.1
   hooks:
     - id: validate-filename
 ```
@@ -18,7 +18,7 @@ The `validate-filename` hook supports custom minimum lengths with the `--min-len
 
 ```yaml
 - repo: https://github.com/stefmolin/filename-validation
-  rev: 0.1.0
+  rev: 0.1.1
   hooks:
     - id: validate-filename
       args: [--min-len=5]
