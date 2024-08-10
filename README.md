@@ -1,7 +1,7 @@
 # Filename validation
 Pre-commit hook for validating Python filenames.
 
-*Note: This hook was created for my article [How to Create a Pre-Commit Hook](https://stefaniemolin.com/articles/devx/pre-commit/hook-creation-guide/).*
+*Note: This hook was created for my article [How to Create a Pre-Commit Hook](https://stefaniemolin.com/coming-soonish/).*
 
 ## Usage
 
