@@ -25,3 +25,8 @@ repos:
     hooks:
       - id: pyproject-fmt
         args: [--keep-full-version, --no-print-diff]
+
+  - repo: https://github.com/stefmolin/filename-validation
+    rev: 0.1.0
+    hooks:
+      - id: validate-filename
