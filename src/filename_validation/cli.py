@@ -10,10 +10,10 @@ from typing import Sequence
 from . import __version__
 
 PROG = 'validate-filename'
-SNAKE_CASE_REGEX = re.compile('^[a-z_]+$')
+SNAKE_CASE_REGEX = '^[a-z_]+$'
 
 
-def is_valid_filename(filename: str, min_len: int = 3) -> bool:
+def is_valid_filename(pattern: re.Pattern, filename: str, min_len: int = 3) -> bool:
     """
     Check if a filename is valid.
 
@@ -34,7 +34,7 @@ def is_valid_filename(filename: str, min_len: int = 3) -> bool:
     if too_short := len(name) < min_len:
         print(f'Name too short ({min_len=}): {filename}')
 
-    if not_snake_case := SNAKE_CASE_REGEX.search(name) is None:
+    if not_snake_case := pattern.search(name) is None:
         print(f'Filename is not in snake case: {filename}')
 
     failure = too_short or not_snake_case
@@ -72,10 +72,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         help='Minimum length for a filename.',
     )
 
+    parser.add_argument(
+        '--regex',
+        default=SNAKE_CASE_REGEX,
+        type=str,
+        help='Filename valid regex.',
+    )
+
     args = parser.parse_args(argv)
 
+    pattern = re.compile(args.regex)
+
     results = (
-        not is_valid_filename(filename, args.min_len) for filename in args.filenames
+        not is_valid_filename(pattern, filename, args.min_len) for filename in args.filenames
     )
     return int(any(results))
 
